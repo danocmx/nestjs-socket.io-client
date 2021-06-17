@@ -2,11 +2,13 @@
 A simple wrapper around socket.io-client for the nestjs framework.
 
 ## Instalation
+Package has to be installed with the socket.io-client version you want.
+
 Via npm
-`npm install nestjs-socket.io-client`
+`npm install nestjs-socket.io-client socket.io-client`
 
 Via yarn
-`yarn add nestjs-socket.io-client`
+`yarn add nestjs-socket.io-client socket.io-client`
 
 ## Usage
 
