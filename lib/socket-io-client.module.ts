@@ -7,9 +7,6 @@ import { SOCKET_IO_CLIENT, SOCKET_OPTIONS } from "./constants";
 
 @Module({})
 export class SocketIoClientModule {
-  // TODO: remove unnecessery dependencies
-  // TODO: add ability to have multiple client connections
-  // TODO: Make this agnostic for client version and options
   forRoot(url: string, options: Partial<SocketOptions & ManagerOptions> = {}): DynamicModule {
     return {
       module: SocketIoClientModule,
