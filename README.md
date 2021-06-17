@@ -28,7 +28,7 @@ export class AppModule {}
 And in your service:
 ```ts
 import { Injectable, Inject, Logger } from "@nestjs/common";
-import { SocketIoClientModule, OnSocketEvent } from "nestjs-socket.io-client";
+import { SocketIoClientModule, OnSocketEvent, SOCKET_IO_CLIENT } from "nestjs-socket.io-client";
 import { Socket } from "socket.io-client"
 
 @Injectable()
