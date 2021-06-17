@@ -1,6 +1,6 @@
 {
   "name": "nestjs-socket.io-client",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "NestJS wrapper around socket.io-client.",
   "author": "danocmx",
   "license": "MIT",
