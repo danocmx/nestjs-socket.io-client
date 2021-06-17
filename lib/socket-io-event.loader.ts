@@ -7,9 +7,8 @@ import {
 } from '@nestjs/common';
 import { DiscoveryService, MetadataScanner, Reflector } from '@nestjs/core';
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
-import { Socket } from "socket.io-client";
 import { SOCKET_IO_CLIENT, SOCKET_EVENT_METADATA, SOCKET_OPTIONS } from "./constants";
-import { EventMetadata } from "./interfaces";
+import { EventMetadata, ISocket } from "./interfaces";
 
 @Injectable()
 export class SocketIoEventLoader
@@ -18,7 +17,7 @@ export class SocketIoEventLoader
     private readonly discoveryService: DiscoveryService,
     private readonly metadataScanner: MetadataScanner,
     private readonly reflector: Reflector,
-    @Inject(SOCKET_IO_CLIENT) private readonly socket: Socket,
+    @Inject(SOCKET_IO_CLIENT) private readonly socket: ISocket,
     @Inject(SOCKET_OPTIONS) private readonly socketOptions: { autoConnect?: boolean }
   ) {}
 

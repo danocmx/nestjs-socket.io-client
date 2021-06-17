@@ -4,6 +4,7 @@ A simple wrapper around socket.io-client for the nestjs framework.
 ## Instalation
 Via npm
 `npm install nestjs-socket.io-client`
+
 Via yarn
 `yarn add nestjs-socket.io-client`
 

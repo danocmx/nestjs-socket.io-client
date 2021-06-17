@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "NestJS wrapper around socket.io-client.",
   "author": "danocmx",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -25,8 +25,7 @@
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.15",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
-    "socket.io-client": "^4.1.2"
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^7.6.0",
@@ -65,5 +64,8 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "peerDependencies": {
+    "socket.io-client": "*"
   }
 }
