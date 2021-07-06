@@ -75,5 +75,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/danocmx/nestjs-socket.io-client.git"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
