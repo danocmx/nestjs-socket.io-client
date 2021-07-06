@@ -1,0 +1,2 @@
+# Ignore source files in the build
+./lib
