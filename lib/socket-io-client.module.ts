@@ -1,15 +1,13 @@
-import io from 'socket.io-client';
 import { DiscoveryModule } from '@nestjs/core';
 import { Module, DynamicModule } from '@nestjs/common';
-import { SocketOptions, ManagerOptions } from 'socket.io-client';
 import { SocketIoEventLoader } from './socket-io-event.loader';
 import { SOCKET_IO_CLIENT, SOCKET_OPTIONS } from './constants';
 
 @Module({})
 export class SocketIoClientModule {
-  forRoot(
+  forRoot<TOptions = Record<string, any>>(
     url: string,
-    options: Partial<SocketOptions & ManagerOptions> = {},
+    options?: TOptions,
   ): DynamicModule {
     return {
       module: SocketIoClientModule,
@@ -22,13 +20,17 @@ export class SocketIoClientModule {
         },
         {
           provide: SOCKET_IO_CLIENT,
-          useValue: io(url, {
-            ...options,
-            /**
-             * Connect after events are subscribed to.
-             */
-            autoConnect: false,
-          }),
+          useFactory: async () => {
+            const { io } = await import('socket.io-client');
+
+            return io(url, {
+              ...(options || {}),
+              /**
+               * Connect after events are subscribed to.
+               */
+              autoConnect: false,
+            });
+          },
         },
         SocketIoEventLoader,
       ],
