@@ -5,7 +5,7 @@ import { SOCKET_IO_CLIENT, SOCKET_OPTIONS } from './constants';
 
 @Module({})
 export class SocketIoClientModule {
-  forRoot<TOptions = Record<string, any>>(
+  static forRoot<TOptions = Record<string, any>>(
     url: string,
     options?: TOptions,
   ): DynamicModule {
