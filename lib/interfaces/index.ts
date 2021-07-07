@@ -1,2 +1,2 @@
-export * from "./event-metadata.interface";
-export * from "./socket.interface";
+export * from './event-metadata.interface';
+export * from './socket.interface';

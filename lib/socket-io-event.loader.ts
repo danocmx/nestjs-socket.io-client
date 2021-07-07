@@ -7,18 +7,24 @@ import {
 } from '@nestjs/common';
 import { DiscoveryService, MetadataScanner, Reflector } from '@nestjs/core';
 import { InstanceWrapper } from '@nestjs/core/injector/instance-wrapper';
-import { SOCKET_IO_CLIENT, SOCKET_EVENT_METADATA, SOCKET_OPTIONS } from "./constants";
-import { EventMetadata, ISocket } from "./interfaces";
+import {
+  SOCKET_IO_CLIENT,
+  SOCKET_EVENT_METADATA,
+  SOCKET_OPTIONS,
+} from './constants';
+import { EventMetadata, ISocket } from './interfaces';
 
 @Injectable()
 export class SocketIoEventLoader
-  implements OnApplicationBootstrap, OnApplicationShutdown {
+  implements OnApplicationBootstrap, OnApplicationShutdown
+{
   constructor(
     private readonly discoveryService: DiscoveryService,
     private readonly metadataScanner: MetadataScanner,
     private readonly reflector: Reflector,
     @Inject(SOCKET_IO_CLIENT) private readonly socket: ISocket,
-    @Inject(SOCKET_OPTIONS) private readonly socketOptions: { autoConnect?: boolean }
+    @Inject(SOCKET_OPTIONS)
+    private readonly socketOptions: { autoConnect?: boolean },
   ) {}
 
   onApplicationBootstrap() {
@@ -36,8 +42,8 @@ export class SocketIoEventLoader
     const providers = this.discoveryService.getProviders();
     const controllers = this.discoveryService.getControllers();
     [...providers, ...controllers]
-      .filter(wrapper => wrapper.isDependencyTreeStatic())
-      .filter(wrapper => wrapper.instance)
+      .filter((wrapper) => wrapper.isDependencyTreeStatic())
+      .filter((wrapper) => wrapper.instance)
       .forEach((wrapper: InstanceWrapper) => {
         const { instance } = wrapper;
 
@@ -65,13 +71,12 @@ export class SocketIoEventLoader
 
     const { event } = socketEventMetadata;
 
-    this.socket.on(
-      event,
-      (...args: unknown[]) => instance[methodKey].call(instance, ...args),
+    this.socket.on(event, (...args: unknown[]) =>
+      instance[methodKey].call(instance, ...args),
     );
   }
 
   private getEventHandlerMetadata(target: Type<unknown>): EventMetadata {
-    return this.reflector.get<EventMetadata>(SOCKET_EVENT_METADATA, target)
+    return this.reflector.get<EventMetadata>(SOCKET_EVENT_METADATA, target);
   }
 }

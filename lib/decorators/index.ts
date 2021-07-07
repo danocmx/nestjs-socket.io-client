@@ -1,1 +1,1 @@
-export * from "./on-socket-event.decorator";
+export * from './on-socket-event.decorator';
