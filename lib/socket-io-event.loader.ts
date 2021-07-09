@@ -30,7 +30,7 @@ export class SocketIoEventLoader
   onApplicationBootstrap() {
     this.loadEventListeners();
     // Connect yourself if you set this options to false.
-    if (this.socketOptions.autoConnect == false) return;
+    if (this.socketOptions.autoConnect === false) return;
     this.socket.connect();
   }
 
