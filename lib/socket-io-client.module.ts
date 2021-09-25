@@ -1,11 +1,12 @@
+import { DynamicModule, Module } from '@nestjs/common';
 import { DiscoveryModule } from '@nestjs/core';
-import { Module, DynamicModule } from '@nestjs/common';
-import { SocketIoEventLoader } from './socket-io-event.loader';
+import { ManagerOptions, SocketOptions } from 'socket.io-client';
 import { SOCKET_IO_CLIENT, SOCKET_OPTIONS } from './constants';
+import { SocketIoEventLoader } from './socket-io-event.loader';
 
 @Module({})
 export class SocketIoClientModule {
-  static forRoot<TOptions = Record<string, any>>(
+  static forRoot<TOptions = Partial<ManagerOptions & SocketOptions>>(
     url: string,
     options?: TOptions,
   ): DynamicModule {
