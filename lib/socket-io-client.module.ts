@@ -34,7 +34,7 @@ export class SocketIoClientModule {
         },
         SocketIoEventLoader,
       ],
-      exports: [],
+      exports: [SOCKET_IO_CLIENT],
     };
   }
 }
