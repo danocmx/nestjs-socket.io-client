@@ -10,16 +10,21 @@ Via npm
 Via yarn
 `yarn add nestjs-socket.io-client socket.io-client`
 
+### Note
+You can install any version of `socket.io-client` ranging from v2 to v4 and use generics for autocomplete within the `forRoot` path of the module.
+
 ## Usage
 
 In your AppModule file:
 ```ts
 import { Module } from "@nestjs/common";
 import { SocketIoClientModule } from "nestjs-socket.io-client";
+import { ManagerOptions, SocketOptions } from 'socket.io-client';
 
 @Module({
   imports: [
-    SocketIoClientModule.forRoot({
+    // Generics allow you to use types for the client you choose
+    SocketIoClientModule.forRoot<Partial<ManagerOptions & SocketOptions>>({
       // ... options for the client
       // https://socket.io/docs/v4/client-api/#new-Manager-url-options
     }),
